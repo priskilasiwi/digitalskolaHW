@@ -1,0 +1,139 @@
+{
+  "info": {
+    "_postman_id": "1fc177b6-387d-4e22-a494-75e08ea9d775",
+    "name": "Minibootcamp",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "21521034"
+  },
+  "item": [
+    {
+      "name": "Post Bank account data request",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Test Response Body\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.status).to.eql(\"COMPLETED\");\r",
+              "    pm.expect(jsonData.reference_id).to.eql(\"testingsiniaja\");\r",
+              "    pm.expect(jsonData.bank_account_number).to.eql(\"170101007\");\r",
+              "    pm.expect(jsonData.created).not.null\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Test field is not empty\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.id).to.not.be.empty;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Basic aWx1bWFfZGV2ZWxvcG1lbnRfRlg0ZjBNNXN4RGdrNXFGeVpuazYwWmVuZ0FmQTlvMzF4M2VjZDI5dmloamM0Vmh5SjhGY2xaaEhqanc6"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\"bank_account_number\": \"170101007\",\n\"bank_code\": \"BCA\",\n\"given_name\": \"FIRA DIYANKA\",\n\"surname\": \"FIRA DIYANKA\",\n\"reference_id\": \"testingsiniaja\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.iluma.ai/v1.1/identity/bank_account_data_requests",
+          "protocol": "https",
+          "host": [
+            "api",
+            "iluma",
+            "ai"
+          ],
+          "path": [
+            "v1.1",
+            "identity",
+            "bank_account_data_requests"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Bank account data",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Test Response Body\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.status).to.eql(\"COMPLETED\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 500ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+              "});\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Basic aWx1bWFfZGV2ZWxvcG1lbnRfRlg0ZjBNNXN4RGdrNXFGeVpuazYwWmVuZ0FmQTlvMzF4M2VjZDI5dmloamM0Vmh5SjhGY2xaaEhqanc6"
+          }
+        ],
+        "body": {
+          "mode": "file",
+          "file": {}
+        },
+        "url": {
+          "raw": "https://api.iluma.ai/v1.1/identity/bank_account_data_requests/bknv_6a2fa74d2471702471a8fad5",
+          "protocol": "https",
+          "host": [
+            "api",
+            "iluma",
+            "ai"
+          ],
+          "path": [
+            "v1.1",
+            "identity",
+            "bank_account_data_requests",
+            "bknv_6a2fa74d2471702471a8fad5"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
